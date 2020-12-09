@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./Statistics.css";
 
 const Statistics = ({
@@ -8,19 +9,24 @@ const Statistics = ({
     total,
     positivePercentage
 }) => { 
-    return <div>
-            <h2>Statistics</h2>
-            <p>Good: {good}</p>
-            <p>Neutral: {neutral}</p>
-            <p>Bad: {bad}</p>
-            <p>Total: {total}</p>
-            <p>
-            Positive feedback:{" "}
-            {total > 0
+    return <ul className="Statistics__list">
+        <li>Good: {good}</li>
+        <li>Neutral: {neutral}</li>
+        <li>Bad: {bad}</li>
+        <li>Total: {total}</li>
+        <li>
+            Positive feedback: {total > 0
                 ? positivePercentage + "%"
                 : null}
-            </p>
-        </div>;
+        </li>
+    </ul>;   
 }
 
+Statistics.propTypes = {
+    good: PropTypes.number.isRequired,
+    neutral: PropTypes.number.isRequired,
+    bad: PropTypes.number.isRequired,
+    total: PropTypes.number.isRequired,
+    positivePercentage: PropTypes.number.isRequired,
+};
 export default Statistics;
