@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./Notification-message.css";
+import s from "./Notification-message.module.css";
 
 const NotificationMessage = ({ message }) =>
-    <b className="Notification-message">{message}
+    <b className={s.message}>{message}
     </b>;
     
 NotificationMessage.propTypes = {

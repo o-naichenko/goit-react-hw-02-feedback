@@ -1,5 +1,5 @@
 
-.Feedback__btn {
+.btn {
     /* padding: */
     text-transform: capitalize;
     background-color: #e6e6e6;
@@ -8,14 +8,14 @@
     border-radius: 5px;
     outline: 0;
 }
-.Feedback__btn + .Feedback__btn {
+.btn + .btn {
     margin-left: 10px;
 }
-.Feedback__btn:hover {
+.btn:hover {
     background-color: #99ffff;
     
 }
-.Feedback__btn:active{
+.btn:active{
     background-color: #00ffff;
     color: #fff;
 }

@@ -2,7 +2,7 @@
 Section + .Section {
     margin-top: 20px;
 }
-.Section__title{
+.title{
     margin-top: 0;
     margin-bottom: 20px;
 }
