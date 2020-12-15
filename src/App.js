@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import "./App.css";
 import FeedbackOptions from "./components/Feedback-options";
 import NotificationMessage from "./components/Notification-message";
@@ -11,19 +12,23 @@ class App extends Component {
     neutral: 0,
     bad: 0,
   };
-  static propTypes = {};
+  optionsNames = Object.keys(this.state);
+  static propTypes = {
+    option: PropTypes.string.isRequired,
+  };
+  countTotalFeedback = () => {
+    const { good, neutral, bad } = this.state;
+    return good + neutral + bad;
+  };
+  countPositiveFeedbackPercentage = () => {
+    return Math.round((this.state.good * 100) / this.countTotalFeedback());
+  };
   onLeaveFeedback = ({ option }) => {
     this.setState((prevState) => {
       return {
         [option]: prevState[option] + 1,
       };
     });
-  };
-  countTotalFeedback = () => {
-    return Object.values(this.state).reduce((acc, value) => acc + value);
-  };
-  countPositiveFeedbackPercentage = () => {
-    return Math.round((this.state.good * 100) / this.countTotalFeedback());
   };
   render() {
     const { good, neutral, bad } = this.state;
@@ -33,7 +38,7 @@ class App extends Component {
         <Section title="Please leave feedback">
           {
             <FeedbackOptions
-              options={Object.keys(this.state)}
+              options={this.optionsNames}
               onLeaveFeedback={this.onLeaveFeedback}
             />
           }
